@@ -2,8 +2,7 @@ import urwid
 
 
 def is_very_long(password):
-    if len(password) >= 12:
-        return
+    return len(password) >= 12
 
 
 def has_digit(password):
@@ -23,7 +22,7 @@ def has_lower_letters(password):
 
 
 def has_symbols(password):
-    return any(character in ".,:;!_*-+@`$()/#¤%&)" for character in password)
+    return password and not any(character.isdigit() for character in password) and not any(character.isalpha() for character in password)
 
 
 def on_ask_change(edit, new_edit_text):
@@ -49,3 +48,6 @@ menu = urwid.Pile([ask, reply])
 menu = urwid.Filler(menu, valign='top')
 urwid.connect_signal(ask, 'change', on_ask_change)
 urwid.MainLoop(menu).run()
+
+if __name__ == '__main__':
+    on_ask_change()
