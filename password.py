@@ -22,7 +22,7 @@ def has_lower_letters(password):
 
 
 def has_symbols(password):
-    return password and not any(character.isdigit() for character in password) and not any(character.isalpha() for character in password)
+    return password and not any((character.isdigit(), character.isalpha()) for character in password)
 
 
 def on_ask_change(edit, new_edit_text):
