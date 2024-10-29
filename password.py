@@ -42,10 +42,6 @@ def on_ask_change(edit, new_edit_text):
     reply.set_text("Рейтинг этого пароля: %s" % str(score))
 
 
-def main():
-    on_ask_change()
-
-
 if __name__ == '__main__':
     ask = urwid.Edit('Введите пароль: ', mask='*')
     reply = urwid.Text("")
@@ -53,4 +49,3 @@ if __name__ == '__main__':
     menu = urwid.Filler(menu, valign='top')
     urwid.connect_signal(ask, 'change', on_ask_change)
     urwid.MainLoop(menu).run()
-    main()
